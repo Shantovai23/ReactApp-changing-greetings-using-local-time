@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDom from 'react-dom'
+import './index.css'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+var currentDate=new Date().getHours()
+var greeting=''
+var cssStyle={}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+if(currentDate>=6 && currentDate<12){
+  greeting='Good Morning'
+  cssStyle.color='darkblue'
+}
+else if(currentDate>=12 && currentDate<18){
+  greeting='Good Afternoon'
+  cssStyle.color='darkred'
+}
+else if(currentDate>18 && currentDate<20){
+  greeting='Good Evening'
+  cssStyle.color='darkgreen'
+}
+else{
+  greeting='Good Night'
+  cssStyle.color='indigo'
+}
+
+
+ReactDom.render(<React.Fragment>
+ <div> <h1>Hello Sir! <span style={cssStyle}>{greeting}</span></h1>
+ </div>
+</React.Fragment>,document.getElementById('root'))
